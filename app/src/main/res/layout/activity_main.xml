@@ -63,10 +63,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/common_spacing"
         android:autoLink="web"
+        app:layout_constraintBottom_toTopOf="@id/bottomBarrier"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/topBarrier"
-        app:layout_constraintBottom_toTopOf="@id/bottomBarrier"
         tools:text="@sample/posts.json/data/content" />
 
 
@@ -83,7 +83,6 @@
         android:layout_height="wrap_content"
         app:barrierDirection="top"
         app:constraint_referenced_ids="icons" />
-
 
 
     <LinearLayout
@@ -127,9 +126,9 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="@dimen/posts_icon_size"
+                android:layout_width="wrap_content"
                 android:layout_height="@dimen/posts_icon_size"
-                android:contentDescription="@string/description_post_likes"
+                android:contentDescription="@string/description_post_shares"
                 android:src="@drawable/share_24dp_e3e3e3_fill0_wght400_grad0_opsz24"
                 app:tint="#42424242" />
 
