@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:padding="@dimen/common_spacing"
     tools:context=".MainActivity">
 
     <ImageView
@@ -14,11 +14,10 @@
         android:layout_height="@dimen/posts_avatar_size"
         android:layout_marginBottom="@dimen/common_spacing"
         android:contentDescription="@string/description_post_author_avatar"
-
         app:layout_constraintBottom_toBottomOf="@id/topBarrier"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@sample/posts_avatars" />
+        app:srcCompat="@drawable/netology" />
 
 
     <TextView
@@ -56,6 +55,8 @@
         android:src="@drawable/baseline_more_vert_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
 
     <TextView
         android:id="@+id/content"
@@ -102,15 +103,20 @@
             android:id="@+id/likes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <ImageView
+            <ImageButton
+                android:id="@+id/likesButton"
                 android:layout_width="@dimen/posts_icon_size"
                 android:layout_height="@dimen/posts_icon_size"
                 android:contentDescription="@string/description_post_likes"
-                android:src="@drawable/outline_favorite_24" />
+                android:src="@drawable/outline_favorite_24"
+                android:background="?android:selectableItemBackgroundBorderless" />
+
 
             <TextView
+                android:id="@+id/likesCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -123,16 +129,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <ImageView
+            <ImageButton
+                android:id="@+id/sharesButton"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/posts_icon_size"
                 android:contentDescription="@string/description_post_shares"
                 android:src="@drawable/share_24dp_e3e3e3_fill0_wght400_grad0_opsz24"
-                app:tint="#42424242" />
+                app:tint="#42424242"
+                android:background="?android:selectableItemBackgroundBorderless"/>
 
             <TextView
+                android:id="@+id/sharesCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -149,18 +159,20 @@
             android:id="@+id/views"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/content">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
 
-            <ImageView
+            <ImageButton
+                android:id="@+id/viewsButton"
                 android:layout_width="@dimen/posts_icon_size"
                 android:layout_height="@dimen/posts_icon_size"
                 android:contentDescription="@string/description_post_views"
                 android:src="@drawable/remove_red_eye_24dp_e3e3e3" />
 
+
             <TextView
+                android:id="@+id/viewsCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
