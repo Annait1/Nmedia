@@ -7,7 +7,9 @@ data class Post(
     val content: String,
     var likes: Int = 999,
     var likeByMe: Boolean = false,
-    var shares: Int = 1_300_000
+    var shares: Int = 200,
+    var views: Int = 150_000
+
 )
 
 fun formatCount(count: Int): String {

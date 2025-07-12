@@ -27,6 +27,10 @@ class MainActivity : AppCompatActivity() {
             published.text = post.published
             likesCount.text = post.likes.toString()
 
+            likesCount.text = formatCount(post.likes)
+            sharesCount.text = formatCount(post.shares)
+            viewsCount.text = formatCount(post.views)
+
             root.setOnClickListener {
                 println("root")
             }
@@ -57,10 +61,9 @@ class MainActivity : AppCompatActivity() {
                 sharesCount.text = formatCount(post.shares)
             }
 
-/*
             avatar.setOnClickListener {
                 println("avatar")
-            }*/
+            }
 
 
 
