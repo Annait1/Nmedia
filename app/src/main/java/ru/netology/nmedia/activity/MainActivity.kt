@@ -5,7 +5,9 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import ru.netology.nmedia.viewmodel.PostViewModel
 import ru.netology.nmedia.R
+import ru.netology.nmedia.adapter.PostAdapter
 import ru.netology.nmedia.databinding.ActivityMainBinding
+import ru.netology.nmedia.databinding.CardPostBinding
 import ru.netology.nmedia.dto.formatCount
 
 
@@ -18,39 +20,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        viewModel.view()
+        /*        viewModel.view()*/
 
 
-        viewModel.data.observe(this) { post ->
 
-            with(binding) {
-                author.text = post.author
-                content.text = post.content
-                published.text = post.published
+        val adapter = PostAdapter (
+            onclickListener =  { post -> viewModel.like(post.id)},
+            onShareListener = { post -> viewModel.share(post.id)}
+        )
 
+        binding.list.adapter = adapter
 
-                likesCount.text = formatCount(post.likes)
-                sharesCount.text = formatCount(post.shares)
-                viewsCount.text = formatCount(post.views)
+        viewModel.data.observe(this) { posts ->
+            adapter.submitList(posts)
 
-                root.setOnClickListener {
-                    println("root")
-                }
-
-                if (post.likeByMe) {
-                    likesButton.setImageResource(R.drawable.baseline_favorite_24)
-                }
-
-
-                binding.likesButton.setOnClickListener {
-                    viewModel.like()
-                }
-                binding.sharesButton.setOnClickListener {
-                    viewModel.share()
-                }
-
-            }
         }
     }
 }
-
