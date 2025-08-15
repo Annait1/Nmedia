@@ -5,6 +5,13 @@
     <string name="description_post_likes">Post likes</string>
     <string name="description_post_views">Post views</string>
     <string name="description_post_shares">Post shares</string>
+    <string name="description_post_text">Post text</string>
+    <string name="menu_remove">Remove</string>
+    <string name="error_empty_content">Content can\'t be empty</string>
+    <string name="menu_edit">Edit</string>
+    <string name="edit_mode_title">Editing</string>
+    <string name="description_cancel_edit">Текст поста</string>
+
 
 
 </resources>
