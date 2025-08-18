@@ -62,16 +62,6 @@ class MainActivity : AppCompatActivity() {
             }
 
 
-            viewModel.edited.observe(this) { post ->
-                if (post.id != 0L) {
-                    with(binding.content) {
-                        requestFocus()
-                        setText(post.content)
-                    }
-                }
-
-            }
-
             with(binding) {
                 save.setOnClickListener {
                     if (content.text.isNullOrBlank()) {
@@ -86,10 +76,13 @@ class MainActivity : AppCompatActivity() {
                     viewModel.save()
                     content.setText("")
                     content.clearFocus()
-                    AndroidUtils.hideKeyboard(it)
+                    AndroidUtils.hideKeyboard(content)
                 }
             }
         }
+
+
+
         viewModel.edited.observe(this) { post ->
             binding.editGroup.visibility =
                 if (post.id != 0L) View.VISIBLE else View.GONE
@@ -100,11 +93,13 @@ class MainActivity : AppCompatActivity() {
             } else {
                 binding.content.text.clear()
                 binding.content.clearFocus()
+                AndroidUtils.hideKeyboard(binding.content)
 
             }
         }
         binding.cancelEdit.setOnClickListener {
             viewModel.cancelEdit()
+            AndroidUtils.hideKeyboard(binding.content)
         }
     }
 
