@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity() {
         /*        viewModel.view()*/
 
 
-
         val adapter = PostAdapter(object : OnInteractorListener {
             override fun onLike(post: Post) {
                 viewModel.like(post.id)
@@ -61,24 +60,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-
-            with(binding) {
-                save.setOnClickListener {
-                    if (content.text.isNullOrBlank()) {
-                        Toast.makeText(
-                            this@MainActivity,
-                            R.string.error_empty_content,
-                            Toast.LENGTH_LONG
-                        ).show()
-                        return@setOnClickListener
-                    }
-                    viewModel.changeContent(content.text.toString())
-                    viewModel.save()
-                    content.setText("")
-                    content.clearFocus()
-                    AndroidUtils.hideKeyboard(content)
-                }
-            }
         }
 
 
@@ -97,6 +78,25 @@ class MainActivity : AppCompatActivity() {
 
             }
         }
+
+        with(binding) {
+            save.setOnClickListener {
+                if (content.text.isNullOrBlank()) {
+                    Toast.makeText(
+                        this@MainActivity,
+                        R.string.error_empty_content,
+                        Toast.LENGTH_LONG
+                    ).show()
+                    return@setOnClickListener
+                }
+                viewModel.changeContent(content.text.toString())
+                viewModel.save()
+                content.setText("")
+                content.clearFocus()
+                AndroidUtils.hideKeyboard(content)
+            }
+        }
+
         binding.cancelEdit.setOnClickListener {
             viewModel.cancelEdit()
             AndroidUtils.hideKeyboard(binding.content)
