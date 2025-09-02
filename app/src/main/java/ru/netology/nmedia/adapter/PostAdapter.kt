@@ -51,21 +51,30 @@ class PostViewHolder(
         author.text = post.author
         content.text = post.content
         published.text = post.published
-        likesCount.text = formatCount(post.likes)
-        sharesCount.text = formatCount(post.shares)
+
+        sharesButton.text = formatCount(post.shares)
         viewsCount.text = formatCount(post.views)
 
         root.setOnClickListener {
             println("root")
         }
+        likesButton.apply {
+            isChecked = post.likedByMe
+            text = post.likes.toString()
+        }
 
-        likesButton.setImageResource(
-            if (post.likedByMe) {
-                R.drawable.baseline_favorite_24
-            } else {
-                R.drawable.outline_favorite_24
-            }
-        )
+       /* likesButton.isChecked =
+                likesButton.text =*/
+
+
+
+        /* likesButton.setImageResource(
+             if (post.likedByMe) {
+                 R.drawable.baseline_favorite_24
+             } else {
+                 R.drawable.outline_favorite_24
+             }
+         )*/
 
         likesButton.setOnClickListener {
             onInteractorListener.onLike(post)

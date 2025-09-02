@@ -2,4 +2,15 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="purple_500">#6200EE</color>
+    <color name="purple_700">#3700B3</color>
+    <color name="teal_200">#03DAC5</color>
+    <color name="teal_700">#018786</color>
+    <!--<color name="red">#FF0000</color>-->
+   <!-- <color name="grey">#FF49454F</color>-->
+    <color name="md_theme_light_error">#B3261E</color>
+    <color name="md_theme_light_onSurfaceVariant">#49454F</color>
+    <color name="md_theme_light_primary">#6750A4</color>
+    
+
 </resources>
