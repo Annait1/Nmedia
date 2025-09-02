@@ -8,9 +8,17 @@
     <color name="teal_700">#018786</color>
     <!--<color name="red">#FF0000</color>-->
    <!-- <color name="grey">#FF49454F</color>-->
-    <color name="md_theme_light_error">#B3261E</color>
-    <color name="md_theme_light_onSurfaceVariant">#49454F</color>
-    <color name="md_theme_light_primary">#6750A4</color>
-    
+    <color name="md_theme_error">#B3261E</color>
+    <color name="md_theme_onSurfaceVariant">#49454F</color>
+    <color name="md_theme_primary">#6750A4</color>
+
+
+    <color name="md_theme_light_error">@color/md_theme_error</color>
+    <color name="md_theme_light_onSurfaceVariant">@color/md_theme_onSurfaceVariant</color>
+    <color name="md_theme_light_primary">@color/md_theme_primary</color>
+
+    <color name="md_theme_dark_error">@color/md_theme_error</color>
+    <color name="md_theme_dark_onSurfaceVariant">@color/md_theme_onSurfaceVariant</color>
+    <color name="md_theme_dark_primary">@color/md_theme_primary</color>
 
 </resources>
