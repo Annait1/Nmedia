@@ -51,8 +51,8 @@
         style="@style/Style.OptionsButton"
         android:layout_width="@dimen/posts_menu_size"
         android:layout_height="@dimen/posts_menu_size"
-       app:icon="@drawable/ic_menu"
         android:contentDescription="@string/description_post_menu"
+        app:icon="@drawable/ic_menu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -64,7 +64,7 @@
         android:layout_marginTop="@dimen/common_spacing"
         android:autoLink="web"
 
-        app:layout_constraintBottom_toTopOf="@id/likesButton"
+        app:layout_constraintBottom_toTopOf="@id/videoContent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/header"
@@ -92,7 +92,7 @@
         android:contentDescription="@string/description_post_likes"
         app:icon="@drawable/ic_like"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/content"
+        app:layout_constraintTop_toBottomOf="@id/videoContent"
         tools:text="1" />
 
 
@@ -107,8 +107,7 @@
         app:icon="@drawable/ic_share"
         app:layout_constraintStart_toEndOf="@id/likesButton"
         app:layout_constraintTop_toTopOf="@id/likesButton"
-        tools:text="1"/>
-
+        tools:text="1" />
 
 
     <ImageButton
@@ -132,6 +131,40 @@
         app:layout_constraintStart_toEndOf="@id/viewsButton"
         app:layout_constraintTop_toTopOf="@id/viewsButton"
         tools:text="10" />
+
+
+    <FrameLayout
+        android:id="@+id/videoContent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/common_spacing"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintDimensionRatio="16:9">
+
+    <ImageView
+        android:id="@+id/videoThumb"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/video_placeholder"
+        android:contentDescription="@string/description_post_video"/>
+
+    <ImageView
+        android:id="@+id/videoPlay"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_gravity="center"
+        android:contentDescription="@string/play"
+        android:src="@drawable/play_circle_24dp"
+        app:tint="?attr/colorOnSurface"/>
+    </FrameLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
