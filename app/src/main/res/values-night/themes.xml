@@ -3,5 +3,14 @@
     <style name="Base.Theme.NMedia" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+
+
+
+        <item name="colorError">@color/md_theme_dark_error</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_dark_onSurfaceVariant</item>
+        <item name="colorPrimary">@color/md_theme_dark_primary</item>
     </style>
+
+
+
 </resources>
