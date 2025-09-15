@@ -29,6 +29,8 @@ interface OnInteractorListener {
     fun onRemove(post: Post)
     fun onShare(post: Post)
     fun onEdit(post: Post)
+
+    fun onOpenVideo(url:String)
 }
 
 
@@ -111,25 +113,16 @@ class PostViewHolder(
             }.show()
         }
 
-        val videoUrl = post.video?.trim().takeUnless { it.isNullOrEmpty() }
+        val videoUrl = post.video?.trim()
 
         videoContent.isVisible = videoUrl != null
         videoContent.setOnClickListener(null)
 
-        videoUrl?.let { url ->
-            videoContent.setOnClickListener {
-                val intent = Intent(Intent.ACTION_VIEW, url.toUri())
-                try {
-                    itemView.context.startActivity(intent)
-                } catch (e: ActivityNotFoundException) {
-                    Toast.makeText(
-                        itemView.context,
-                        R.string.error,
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            }
-        }
+       if (!videoUrl.isNullOrBlank()) {
+           videoContent.setOnClickListener {
+               onInteractorListener.onOpenVideo(videoUrl)
+           }
+       }
 
     }
 

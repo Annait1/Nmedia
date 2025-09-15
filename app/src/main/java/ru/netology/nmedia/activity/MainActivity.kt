@@ -1,11 +1,13 @@
 package ru.netology.nmedia.activity
 
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.widget.Toast
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toUri
 import ru.netology.nmedia.viewmodel.PostViewModel
 import ru.netology.nmedia.R
 import ru.netology.nmedia.adapter.OnInteractorListener
@@ -29,7 +31,6 @@ class MainActivity : AppCompatActivity() {
         /*        viewModel.view()*/
 
 
-
         val newPostLauncher = registerForActivityResult(NewPostResultContract()) { content ->
             content ?: return@registerForActivityResult
             viewModel.changeContent(content)
@@ -41,7 +42,16 @@ class MainActivity : AppCompatActivity() {
         }
 
         val editPostLauncher = registerForActivityResult(EditPostResultContract()) { newContent ->
-            newContent ?: return@registerForActivityResult
+            if (newContent == null) {
+                viewModel.cancelEdit()
+                return@registerForActivityResult
+            }
+
+            val text = newContent.trim()
+            if (text.isBlank()){
+                viewModel.cancelEdit()
+                return@registerForActivityResult
+            }
             viewModel.changeContent(newContent.trim())
             viewModel.save()
         }
@@ -73,6 +83,15 @@ class MainActivity : AppCompatActivity() {
                 editPostLauncher.launch(post.content)
             }
 
+            override fun onOpenVideo(url: String) {
+                val intent = Intent(Intent.ACTION_VIEW, url.toUri())
+                try {
+                    startActivity(intent)
+                } catch (e: ActivityNotFoundException) {
+                    Toast.makeText(this@MainActivity, R.string.error, Toast.LENGTH_SHORT).show()
+                }
+            }
+
         }
 
         )
@@ -88,9 +107,6 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
-
-
-
 
 
         /* было до viewModel.edited.observe(this) { post ->
