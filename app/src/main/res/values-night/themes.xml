@@ -6,11 +6,9 @@
 
 
 
-        <item name="colorError">@color/md_theme_dark_error</item>
-        <item name="colorOnSurfaceVariant">@color/md_theme_dark_onSurfaceVariant</item>
-        <item name="colorPrimary">@color/md_theme_dark_primary</item>
+        <item name="colorError">@color/md_theme_error</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_onSurfaceVariant</item>
+        <item name="colorPrimary">@color/md_theme_primary</item>
     </style>
-
-
 
 </resources>

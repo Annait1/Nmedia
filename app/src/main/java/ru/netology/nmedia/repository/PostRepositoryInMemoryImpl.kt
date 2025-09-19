@@ -10,11 +10,19 @@ class PostRepositoryInMemoryImpl : PostRepository {
     private var posts = listOf(
         Post(
             id = index++,
-            author = "Нетология. Университет интернет-профессий будущего",
-            content = "Освоение новой профессии — это не только открывающиеся возможности и перспективы, но и настоящий вызов самому себе. Приходится выходить из зоны комфорта и перестраивать привычный образ жизни: менять распорядок дня, искать время для занятий, быть готовым к возможным неудачам в начале пути. В блоге рассказали, как избежать стресса на курсах профпереподготовки → http://netolo.gy/fPD",
+            author = "Гимн России",
+            content = "Россия — священная наша держава,\n" +
+                    "Россия — любимая наша страна.\n" +
+                    "Могучая воля, великая слава —\n" +
+                    "Твоё достоянье на все времена!",
             published = "23 сентября в 10:12",
-            likes = 0,
-            likedByMe = false
+
+            likes = 1000,
+            likedByMe = false,
+            video = "https://www.youtube.com/watch?v=tNIMbHNtm7w"
+
+
+
         ),
         Post(
             id = index++,
@@ -23,6 +31,7 @@ class PostRepositoryInMemoryImpl : PostRepository {
             published = "22 сентября в 10:14",
             likes = 0,
             likedByMe = false
+
         ),
         Post(
             id = index++,

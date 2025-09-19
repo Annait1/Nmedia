@@ -17,9 +17,9 @@
         </item>
 
 
-        <item name="colorError">@color/md_theme_light_error</item>
-        <item name="colorOnSurfaceVariant">@color/md_theme_light_onSurfaceVariant</item>
-        <item name="colorPrimary">@color/md_theme_light_primary</item>
+        <item name="colorError">@color/md_theme_error</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_onSurfaceVariant</item>
+        <item name="colorPrimary">@color/md_theme_primary</item>
 
 
 

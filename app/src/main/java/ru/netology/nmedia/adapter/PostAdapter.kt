@@ -1,9 +1,16 @@
 package ru.netology.nmedia.adapter
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
 import android.widget.PopupMenu
+import android.widget.Toast
+import androidx.core.net.toUri
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -22,6 +29,8 @@ interface OnInteractorListener {
     fun onRemove(post: Post)
     fun onShare(post: Post)
     fun onEdit(post: Post)
+
+    fun onOpenVideo(url:String)
 }
 
 
@@ -45,7 +54,8 @@ class PostAdapter(
 class PostViewHolder(
     private val binding: CardPostBinding,
     private val onInteractorListener: OnInteractorListener,
-) : RecyclerView.ViewHolder(binding.root) {
+
+    ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(post: Post) = with(binding) {
         author.text = post.author
@@ -63,9 +73,8 @@ class PostViewHolder(
             text = post.likes.toString()
         }
 
-       /* likesButton.isChecked =
-                likesButton.text =*/
-
+        /* likesButton.isChecked =
+                 likesButton.text =*/
 
 
         /* likesButton.setImageResource(
@@ -103,9 +112,22 @@ class PostViewHolder(
                 }
             }.show()
         }
+
+        val videoUrl = post.video?.trim()
+
+        videoContent.isVisible = videoUrl != null
+        videoContent.setOnClickListener(null)
+
+       if (!videoUrl.isNullOrBlank()) {
+           videoContent.setOnClickListener {
+               onInteractorListener.onOpenVideo(videoUrl)
+           }
+       }
+
     }
 
 }
+
 
 object PostDiffCallback : DiffUtil.ItemCallback<Post>() {
     override fun areItemsTheSame(oldItem: Post, newItem: Post): Boolean {
@@ -116,3 +138,5 @@ object PostDiffCallback : DiffUtil.ItemCallback<Post>() {
         return oldItem == newItem
     }
 }
+
+
