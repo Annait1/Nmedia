@@ -56,5 +56,6 @@ class PostViewModel(application: Application) : AndroidViewModel(application) {
         edited.value = empty
     }
 
+
     /*fun view() = repository.view()*/
 }
