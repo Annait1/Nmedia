@@ -3,24 +3,23 @@ package ru.netology.nmedia.fragment
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.net.toUri
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import ru.netology.nmedia.R
 import ru.netology.nmedia.adapter.OnInteractorListener
 import ru.netology.nmedia.adapter.PostViewHolder
-import ru.netology.nmedia.databinding.CardPostBinding
 import ru.netology.nmedia.databinding.FragmentSinglePostBinding
 import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.viewmodel.PostViewModel
 
 class SinglePostFragment : Fragment() {
-    private val viewModel: PostViewModel by activityViewModels()
+    private val viewModel: PostViewModel by viewModels(ownerProducer = ::requireParentFragment)
 
 
     override fun onCreateView(

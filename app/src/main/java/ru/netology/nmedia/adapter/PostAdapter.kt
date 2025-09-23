@@ -29,9 +29,9 @@ interface OnInteractorListener {
     fun onRemove(post: Post)
     fun onShare(post: Post)
     fun onEdit(post: Post)
-
     fun onOpenVideo(url:String)
-    fun onOpen(post: Post)
+
+    fun onOpen(post: Post) {}
 }
 
 
