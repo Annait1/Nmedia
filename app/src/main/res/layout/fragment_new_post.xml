@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.NewPostActivity">
+    tools:context=".fragment.NewPostFragment">
 
     <EditText
         android:id="@+id/edit"
@@ -29,5 +29,6 @@
         android:contentDescription="@string/description_post_save"
         app:layout_anchor="@id/bottomAppBar"
         app:srcCompat="@drawable/ic_add_24" />
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

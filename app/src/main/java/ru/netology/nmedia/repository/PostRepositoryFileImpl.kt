@@ -8,10 +8,6 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import ru.netology.nmedia.dto.Post
 
-
-// TODO Узнать: почему надо писать
-//  private  val context: Context
-//  чтобы сделать property"для обращения в методе sync()"пш
 class PostRepositoryFileImpl(private val context: Context) : PostRepository {
 
 

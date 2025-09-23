@@ -29,14 +29,15 @@ interface OnInteractorListener {
     fun onRemove(post: Post)
     fun onShare(post: Post)
     fun onEdit(post: Post)
-
     fun onOpenVideo(url:String)
+
+    fun onOpen(post: Post) {}
 }
 
 
 class PostAdapter(
     private val onInteractorListener: OnInteractorListener,
-) : ListAdapter<Post, PostViewHolder>(PostDiffCallback) {
+) : ListAdapter<Post, PostViewHolder>(PostViewHolder.PostDiffCallback) {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
@@ -57,86 +58,95 @@ class PostViewHolder(
 
     ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(post: Post) = with(binding) {
-        author.text = post.author
-        content.text = post.content
-        published.text = post.published
+    fun bind(post: Post) {
+        bind(binding, post, onInteractorListener)
+    }
 
-        sharesButton.text = formatCount(post.shares)
-        viewsCount.text = formatCount(post.views)
-
-        root.setOnClickListener {
-            println("root")
-        }
-        likesButton.apply {
-            isChecked = post.likedByMe
-            text = post.likes.toString()
-        }
-
-        /* likesButton.isChecked =
-                 likesButton.text =*/
+    companion object {
+        fun bind(
+            binding: CardPostBinding,
+            post: Post,
+            listener: OnInteractorListener? = null
+        ) = with(binding) {
+            author.text = post.author
+            content.text = post.content
+            published.text = post.published
+            sharesButton.text = formatCount(post.shares)
+            viewsCount.text = formatCount(post.views)
 
 
-        /* likesButton.setImageResource(
-             if (post.likedByMe) {
-                 R.drawable.baseline_favorite_24
-             } else {
-                 R.drawable.outline_favorite_24
-             }
-         )*/
 
-        likesButton.setOnClickListener {
-            onInteractorListener.onLike(post)
-        }
-        sharesButton.setOnClickListener {
-            onInteractorListener.onShare(post)
-        }
+            likesButton.apply {
+                isChecked = post.likedByMe
+                text = post.likes.toString()
+            }
 
-        menu.setOnClickListener {
-            PopupMenu(it.context, it).apply {
-                inflate(R.menu.post_options)
-                setOnMenuItemClickListener { item ->
-                    when (item.itemId) {
-                        R.id.remove -> {
-                            onInteractorListener.onRemove(post)
-                            true
+            val videoUrl = post.video?.trim()
+            videoContent.isVisible = videoUrl != null
+            videoContent.setOnClickListener(null)
+
+            if (listener != null) {
+                root.setOnClickListener {
+                    listener.onOpen(post)
+                }
+
+
+
+                likesButton.setOnClickListener {
+                    listener.onLike(post)
+                }
+                sharesButton.setOnClickListener {
+                    listener.onShare(post)
+                }
+
+                menu.setOnClickListener {
+                    PopupMenu(it.context, it).apply {
+                        inflate(R.menu.post_options)
+                        setOnMenuItemClickListener { item ->
+                            when (item.itemId) {
+                                R.id.remove -> {
+                                    listener.onRemove(post)
+                                    true
+                                }
+
+                                R.id.edit -> {
+                                    listener.onEdit(post)
+                                    true
+                                }
+
+                                else -> false
+                            }
                         }
+                    }.show()
+                }
 
-                        R.id.edit -> {
-                            onInteractorListener.onEdit(post)
-                            true
-                        }
 
-                        else -> false
+
+                if (!videoUrl.isNullOrBlank()) {
+                    videoContent.setOnClickListener {
+                        listener.onOpenVideo(videoUrl)
                     }
                 }
-            }.show()
+
+            }
+
+        }
         }
 
-        val videoUrl = post.video?.trim()
 
-        videoContent.isVisible = videoUrl != null
-        videoContent.setOnClickListener(null)
+        object PostDiffCallback : DiffUtil.ItemCallback<Post>() {
+            override fun areItemsTheSame(oldItem: Post, newItem: Post): Boolean {
+                return oldItem.id == newItem.id
+            }
 
-       if (!videoUrl.isNullOrBlank()) {
-           videoContent.setOnClickListener {
-               onInteractorListener.onOpenVideo(videoUrl)
-           }
-       }
-
+            override fun areContentsTheSame(oldItem: Post, newItem: Post): Boolean {
+                return oldItem == newItem
+            }
+        }
     }
 
-}
 
 
-object PostDiffCallback : DiffUtil.ItemCallback<Post>() {
-    override fun areItemsTheSame(oldItem: Post, newItem: Post): Boolean {
-        return oldItem.id == newItem.id
-    }
 
-    override fun areContentsTheSame(oldItem: Post, newItem: Post): Boolean {
-        return oldItem == newItem
-    }
-}
 
 
