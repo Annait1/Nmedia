@@ -38,8 +38,11 @@ arguments?.textAgrs?.let(binding.edit::setText)
 
         if (!isEditing) {
             val draft = prefs.getString("draft_text", null)
+
+
             if (!draft.isNullOrBlank() && binding.edit.text.isNullOrBlank()) {
                 binding.edit.setText(draft)
+                
                 binding.edit.setSelection(draft.length)
             }
         }

@@ -1,3 +1,4 @@
+/*
 package ru.netology.nmedia.repository
 
 import androidx.lifecycle.LiveData
@@ -17,7 +18,7 @@ class PostRepositorySQLiteImpl(
         data.value = posts
     }
 
-    override fun get(): LiveData<List<Post>> = data
+    override fun getAll(): LiveData<List<Post>> = data
 
     override fun save(post: Post) {
         val id = post.id
@@ -57,4 +58,4 @@ class PostRepositorySQLiteImpl(
         posts = posts.filter { it.id != id }
         data.value = posts
     }
-}
+}*/
