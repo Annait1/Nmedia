@@ -22,7 +22,7 @@ interface OnInteractorListener {
     fun onRemove(post: Post)
     fun onShare(post: Post)
     fun onEdit(post: Post)
-    fun onOpenVideo(url:String)
+    fun onOpenVideo(url: String)
 
     fun onOpen(post: Post) {}
 }
@@ -124,19 +124,19 @@ class PostViewHolder(
             }
 
         }
+    }
+
+
+    object PostDiffCallback : DiffUtil.ItemCallback<Post>() {
+        override fun areItemsTheSame(oldItem: Post, newItem: Post): Boolean {
+            return oldItem.id == newItem.id
         }
 
-
-        object PostDiffCallback : DiffUtil.ItemCallback<Post>() {
-            override fun areItemsTheSame(oldItem: Post, newItem: Post): Boolean {
-                return oldItem.id == newItem.id
-            }
-
-            override fun areContentsTheSame(oldItem: Post, newItem: Post): Boolean {
-                return oldItem == newItem
-            }
+        override fun areContentsTheSame(oldItem: Post, newItem: Post): Boolean {
+            return oldItem == newItem
         }
     }
+}
 
 
 

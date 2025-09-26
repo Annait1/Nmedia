@@ -18,5 +18,14 @@
     <string name="description_post_video">Видео</string>
     <string name="play">Воспроизвести</string>
     <string name="error">Ошибка</string>
+    <string name="google_play_unavailable">Гугл интерфейс приложения недоступнен </string>
+    <string name="notification_user_liked">пользователь %1$s поставил лайк %2$s\'s post</string>
+    <string name="channel_remote_name">Server notifications</string>
+    <string name="channel_remote_description">Notifications from remote server</string>
+    <string name="missing_action">Нет действия в сообщении: %1$s</string>
+    <string name="unknown_action">Неизвестное действие: %1$s</string>
+    <string name="content_error">Ошибка разбора содержимого: %1$s</string>
+    <string name="notification_new_post_title">%1$s опубликовал новый пост:</string>
+
 
 </resources>

@@ -9,7 +9,7 @@ import ru.netology.nmedia.entity.PostEntity
 
 //всегда обновлять версию и писать миграцию, если что-то меняется в полях таблицы
 @Database(entities = [PostEntity::class], version = 1)
-abstract class AppDb: RoomDatabase() {
+abstract class AppDb : RoomDatabase() {
     abstract fun postDao(): PostDao
 
     companion object {

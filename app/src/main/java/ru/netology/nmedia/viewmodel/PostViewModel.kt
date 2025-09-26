@@ -50,11 +50,11 @@ class PostViewModel(application: Application) : AndroidViewModel(application) {
 
     }
 
-    fun edit(post:Post) {
+    fun edit(post: Post) {
         edited.value = post
     }
 
-    fun cancelEdit(){
+    fun cancelEdit() {
         edited.value = empty
     }
 

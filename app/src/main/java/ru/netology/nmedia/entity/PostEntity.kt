@@ -32,19 +32,20 @@ data class PostEntity(
         shares = shares,
         views = views
     )
-    companion object{
+
+    companion object {
         fun fromDto(post: Post) = post.run {
-          PostEntity(
-              id = id,
-              author = author,
-              published = published,
-              content = content,
-              likes = likes,
-              likedByMe = likedByMe,
-              video = video,
-              shares = shares,
-              views = views
-          )
+            PostEntity(
+                id = id,
+                author = author,
+                published = published,
+                content = content,
+                likes = likes,
+                likedByMe = likedByMe,
+                video = video,
+                shares = shares,
+                views = views
+            )
         }
     }
 }
