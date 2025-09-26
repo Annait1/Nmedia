@@ -26,10 +26,10 @@ jobs:
 
       - name: Decode fcm.json
         env:
-          FIREBASE_ADMIN_KEY: ${{ secrets.FIREBASE_ADMIN_KEY }}
+          FIREBASE_SECRET_PUSHER: ${{ secrets.FIREBASE_SECRET_PUSHER }}
         run: |
           mkdir -p ./pusher
-          echo "$FIREBASE_ADMIN_KEY" > ./pusher/fcm.json
+          echo "$FIREBASE_SECRET_PUSHER" > ./pusher/fcm.json
 
       - name: Build Android
         run: |
@@ -44,4 +44,5 @@ jobs:
         with:
           name: app-debug.apk
           path: app/build/outputs/apk/debug/app-debug.apk
+
 
