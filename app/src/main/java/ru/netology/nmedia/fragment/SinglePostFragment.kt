@@ -37,7 +37,7 @@ class SinglePostFragment : Fragment() {
 
             }
 
-            override fun onLike(post: Post) = viewModel.like(post.id)
+            override fun onLike(post: Post) = viewModel.likeById(post.id)
             override fun onShare(post: Post) = viewModel.share(post.id)
             override fun onRemove(post: Post) {
                 viewModel.removeById(post.id)
