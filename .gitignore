@@ -1,4 +1,4 @@
-reserve.md
+тreserve.md
 HELP.md
 .gradle
 build/
@@ -46,3 +46,5 @@ captures/
 
 ### Gradle ###
 !gradle/wrapper/gradle-wrapper.jar
+
+app/google-services.json

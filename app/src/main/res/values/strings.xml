@@ -17,7 +17,14 @@
     <string name="description_post_video">Video</string>
     <string name="play">Play</string>
     <string name="error">Error</string>
-
+    <string name="google_play_unavailable">Google Api Unavailable</string>
+    <string name="notification_user_liked">User %1$s liked %2$s\'s post</string>
+    <string name="channel_remote_name">Server notifications</string>
+    <string name="channel_remote_description">Notifications from remote server</string>
+    <string name="missing_action">No action in message: %1$s</string>
+    <string name="unknown_action">Unknown action: %1$s</string>
+    <string name="content_error">Error parsing content: %1$s</string>
+    <string name="notification_new_post_title">%1$s published a new post:</string>
 
 
 </resources>

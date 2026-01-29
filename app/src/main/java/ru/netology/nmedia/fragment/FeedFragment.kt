@@ -81,11 +81,11 @@ class FeedFragment : Fragment() {
                 viewModel.edit(post)
                 /*  editPostLauncher.launch(post.content)*/
                 findNavController().navigate(
-                R.id.action_feedFragment_to_newPostFragment,
-                Bundle().apply {
-                    textAgrs = post.content
-                    putLong("postId", post.id)
-                }
+                    R.id.action_feedFragment_to_newPostFragment,
+                    Bundle().apply {
+                        textAgrs = post.content
+                        putLong("postId", post.id)
+                    }
                 )
             }
 

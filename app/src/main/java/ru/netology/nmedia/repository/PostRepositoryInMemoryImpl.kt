@@ -22,7 +22,6 @@ class PostRepositoryInMemoryImpl : PostRepository {
             video = "https://www.youtube.com/watch?v=tNIMbHNtm7w"
 
 
-
         ),
         Post(
             id = index++,
@@ -122,24 +121,24 @@ class PostRepositoryInMemoryImpl : PostRepository {
     }
 
     override fun removeById(id: Long) {
-        posts = posts.filter{ it.id != id}
+        posts = posts.filter { it.id != id }
         data.value = posts
     }
 
     override fun save(post: Post) {
-        posts = if(post.id == 0L){
-             listOf(
+        posts = if (post.id == 0L) {
+            listOf(
                 post.copy(
                     id = index++,
                     author = "Me",
                     published = "now"
                 )
             ) + posts
-        }else{
-           posts.map {
+        } else {
+            posts.map {
                 if (post.id == it.id) {
                     it.copy(content = post.content)
-                }else it
+                } else it
             }
         }
 
